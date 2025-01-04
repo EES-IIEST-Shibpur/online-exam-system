@@ -20,9 +20,10 @@ dotenv.config();
 connectDB();
 
 const allowedOrigins = [
+  'http://localhost:3000',
   'https://apticrack.aminuldev.me',
   'https://online-exam-system-frontend.vercel.app',
-  'http://localhost:3000',
+  'http://localhost:5000',
 ];
 
 app.use(cors({

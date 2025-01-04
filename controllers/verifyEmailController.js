@@ -34,6 +34,7 @@ exports.sendOTP = async (req, res) => {
 
         return res.status(200).json({ status: 'success', message: 'OTP sent successfully' });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ status: 'error', message: 'Something went wrong. Please try again later.', error: error.message });
     }
 };
@@ -62,6 +63,7 @@ exports.verifyOTP = async (req, res) => {
 
         return res.status(200).json({ status: 'success', message: 'Email verified successfully' });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ status: 'error', message: 'Something went wrong. Please try again later.', error: error.message });
     }
 };

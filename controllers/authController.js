@@ -26,6 +26,7 @@ exports.signup = async (req, res) => {
         await newUser.save();
         return res.status(201).json({ status: 'success', message: 'User registered successfully' });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ status: 'error', message: 'Server error' });
     }
 };
@@ -44,6 +45,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' });
         return res.status(200).json({ status: "success", message: 'Login successful', token });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ status: "error", message: "Something went wrong. Please try again later." });
     }
 };

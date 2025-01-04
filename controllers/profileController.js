@@ -51,6 +51,7 @@ const updateProfile = async (req, res) => {
             data: updatedProfile 
         });
     } catch (error) {
+        console.error("Error updating profile: ",error);
         return res.status(500).json({ status: "error", message: "Something went wrong", error: error.message });
     }
 };

@@ -78,6 +78,7 @@ exports.getAllQuestions = async (req, res) => {
 
         return res.status(200).json({ status: "success", data: questions });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ status: "error", message: "Something went wrong. Please try again later." });
     }
 };
@@ -89,6 +90,7 @@ exports.getQuestionById = async (req, res) => {
         if (!question) return res.status(404).json({ status: "error", message: 'Question not found' });
         return res.status(200).json({status: "success", data: question});
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ status: "error", message: "Something went wrong. Please try again later." });
     }
 };
@@ -132,6 +134,7 @@ exports.deleteQuestion = async (req, res) => {
         if (!deletedQuestion) return res.status(404).json({ status: "error", message: 'Question not found' });
         res.status(200).json({ status: "success", message: 'Question deleted successfully' });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ status: "error", message: 'Something went wrong. Please try again later.' });
     }
 };
