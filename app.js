@@ -21,7 +21,7 @@ connectDB();
 
 const allowedOrigins = [
   'https://apticrack.aminuldev.me',
-  'https://admin.apticrack.aminuldev.me/',
+  'https://admin.apticrack.aminuldev.me',
   'https://online-exam-system-frontend.vercel.app',
 ];
 
