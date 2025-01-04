@@ -1,11 +1,9 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator');
 const User = require('../models/User');
 
 exports.signup = async (req, res) => {
     const { name, email, password, department, enrollmentNumber, semester, year } = req.body;
-    console.log(name, email, password, department, enrollmentNumber, semester, year)
 
     try {
         const existingUser = await User.findOne({ email });
