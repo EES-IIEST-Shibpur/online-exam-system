@@ -20,8 +20,8 @@ dotenv.config();
 connectDB();
 
 const allowedOrigins = [
-  'https://apticrack.aminuldev.me',
-  'https://admin.apticrack.aminuldev.me',
+  'https://apticrack.eesiiests.org',
+  'https://admin.apticrack.eesiiests.org',
   'https://online-exam-system-frontend.vercel.app',
 ];
 
