@@ -117,25 +117,30 @@ exports.deleteExam = async (req, res) => {
 };
 
 exports.upcomingExams = async (req, res) => {
-    try {
-        const exams = await Exam.find();
-        if (!exams || exams.length === 0) {
-            return res.status(404).json({ status: "error", message: "Exams not found" });
-        }
+  try {
+    const currentTime = new Date();
 
-        // const currentTime = new Date();
+    const exams = await Exam.find({
+      startTime: { $gt: currentTime }
+    }).sort({ startTime: 1 });
 
-        // const upcomingExams = exams.filter(exam => {
-        //     return new Date(exam.startTime) > currentTime;
-        // });
-
-        // if (upcomingExams.length === 0) {
-        //     return res.status(404).json({ status: "error", message: "No upcoming exams" });
-        // }
-
-        return res.status(200).json({ status: "success", data: exams });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ status: "error", message: "Something went wrong. Please try again later" });
+    if (exams.length === 0) {
+      return res.status(404).json({
+        status: "error",
+        message: "No upcoming exams found"
+      });
     }
+
+    return res.status(200).json({
+      status: "success",
+      data: exams
+    });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: "error",
+      message: "Something went wrong. Please try again later"
+    });
+  }
 };
